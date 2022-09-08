@@ -14,6 +14,12 @@ module.exports=(mongoose)=>{
         },
         role:{
             type:String
+        },
+        isLoggedIn:{
+            type:Boolean
+        },
+        token:{
+            type:String
         }
     }))
     return user;

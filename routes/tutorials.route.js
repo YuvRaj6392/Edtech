@@ -2,18 +2,17 @@
 //app is equal to require('express')
 module.exports=app=>{
     var router=require('express').Router();
+    const Tutorial=require('../controllers/tutorial.controller')
 
     //adding a new course
 
-    router.post('/add')
+    router.post('/add',Tutorial.create)
 
     //retrieve all courses
-    router.get('/')
+    router.get('/',Tutorial.findAllCourses)
 
     //retrieve courses by category
-    router.get('/categories/:categoryName',(req,res)=>{
-       res.send("your implementation works")
-    })
+    router.get('/categories/:categoryName',Tutorial.findCourseByCategory)
 
     //retrieve all categories
     router.get('/categories')
@@ -33,5 +32,5 @@ module.exports=app=>{
     //delete all the courses
     router.delete('/')
 
-    app.use("/api/tutorial",router)
+    app.use("/api/tutorials",router)
 }   
